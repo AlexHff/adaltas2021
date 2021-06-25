@@ -222,6 +222,36 @@
   description={Système d'exploitation constitué de logiciel libre}
 }
 
+\newglossaryentry{virtualbox}
+{
+  name=VirtualBox,
+  description={Logiciel de virtualisation Open Source et multiplateforme}
+}
+
+\newglossaryentry{vagrant}
+{
+  name=Vagrant,
+  description={Outil permettant de créer et de gérer des environnements de machines virtuelles}
+}
+
+\newglossaryentry{centos}
+{
+  name=Centos,
+  description={distribution GNU/Linux destinée aux serveurs}
+}
+
+\newglossaryentry{hdfs}
+{
+  name=HDFS,
+  description={framework libre et open source écrit en Java destiné à faciliter la création d'applications distribuées}
+}
+
+\newglossaryentry{ansible}
+{
+  name=Ansible,
+  description={plate-forme logicielle open-source pour la configuration, automatisation et la gestion de machines}
+}
+
 \begin{titlepage}
 \title{	\includegraphics[scale=0.4]{assets/img/logo-adaltas.png}\\[1 cm]
 		\normalsize \textsc{Rapport de stage}\\[0.8cm]
@@ -264,13 +294,9 @@ En cette période inédite de crise sanitaire, j'ai eu la chance de pouvoir trav
 
 \chapter*{Résumé}
 
-Ce document décrit mon stage de deuxième année du cycle ingénieur effectué au sein de l'entreprise Adaltas. Cette dernière est une équipe de consultants experts en Open Source, Big Data et systèmes distribués. La société fournit à ses clients un savoir-faire reconnu pour sa manière d'utiliser les technologies et pour convertir leurs cas d'usage en projets exploités en production, sur la façon de réduire les coûts et d'accélérer les livraisons de nouvelles fonctionnalités.\\
+Ce rapport décrit les travaux effectués lors de mon stage de 6 mois chez Adaltas. J'ai travaillé sous la supervision de David Worms en tant que Infrastructure and Security Operations (InfraOps) Intern. En tant qu'ingénieur InfraOps, j'ai aidé à construire des systèmes automatisés, sécurisés, fiables et observables, ainsi que des processus permettant aux autres équipes d'ingénierie d'Adaltas d'utiliser efficacement notre infrastructure pour lancer, exploiter et fournir des produits et services de grande qualité destinés aux clients et couvrant de multiples écosystèmes b2c, partenaires et vendeurs à travers le monde.\\
 
-Au sein de cette structure, j'ai eu la chance d'évoluer en tant que développeur. J'ai travaillé sur Nikita\footnote{\href{https://github.com/adaltas/node-nikita}{https://github.com/adaltas/node-nikita}}, une librairie d’automatisation pour le déploiement de systèmes pour \gls{nodejs}. Ce logiciel a été conçu dans le but d'aider les développeurs et les opérateurs à déployer des infrastructures et des logiciels Big Data de manière flexible et idempotente.\\
-
-L'objectif de ce stage était de contribuer au développement d'un projet Open Source et ainsi d'en apprendre plus sur cet axe de valorisation. Adaltas est une société “open”. Son engagement se construit sur les fondations d’un code source, d’une collaboration, de standards et d’une formation ouverts. Il s'agit d'une façon de penser et de travailler que je trouve intéressantes et dont j'apprécie les aspects. C'est également l'une des raisons pour lesquelles j'ai choisi d'effectuer mon stage chez Adaltas.\\
-
-\noindent\textbf{Mots clés} : Big Data, déploiement, DevOps, InfraOps.
+\noindent\textbf{Mots clés} : Big Data, DevOps, InfraOps.
 
 \newpage
 \thispagestyle{empty}
@@ -287,11 +313,9 @@ L'objectif de ce stage était de contribuer au développement d'un projet Open S
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Mon intérêt pour la data science et plus généralement pour l’informatique et les nouvelles technologies m’a amené à chercher un stage dans une société qui en a fait son cœur de métier. Le début de ma recherche de stage a été le mois de juillet 2019. J'ai envoyé des candidatures à plus d'une centaine d'entreprises qui ont donné lieu à des entretiens chez Google, Facebook et Amazon entre autres. Les épreuves comportaient des questions algorithmiques appliquées à des problèmes ludiques qu'il s'agit de résoudre dans une durée impartie. Florent Diedler, enseignant en informatique à l'ECE, m'a d'ailleurs beaucoup aidé lors de la préparation à ces entretiens. C'est durant un cours de \gls{devops} animé par Gregor Jouet, consultant chez Adaltas, que j'ai découvert cette entreprise, ses méthodologies et sa culture. Au mois de novembre, alors que nous travaillions sur un projet \gls{devops}, Gregor Jouet a invité les élèves intéressés par les technologies data science et big data à lui envoyer leur CV. Quelques semaines plus tard, j'ai reçu un appel de David Worms, dirigeant de la société Adaltas, qui m'a proposé un entretien. C'est dans ce contexte qu'est parvenue ma demande de stage à Adaltas qui a décidé d'accepter ma candidature.\\
+Mon intérêt pour la data science et plus généralement pour l’informatique et les nouvelles technologies m’a amené à chercher un stage dans une société qui en a fait son cœur de métier. Au sein de l'équipe InfraOps d'Adaltas, j'ai trouvé une opportunité unique pour mettre à profit mes compétences en matière de développement et de conception. J'ai eu la chance de participaer à la création de systèmes et d'outils d'infrastructure pour permettre la mise en production de nouveaux produits qui s'étendent sur des millions d'utilisateurs. Pour assurer l’exploitation de la plateforme, j'ai mis en place des chaînes de traitement en streaming pour collecter, traiter, afficher et alerter à partir des évènements émis par le système.\\
 
-Ce document présente les travaux et missions effectués au sein de l'entreprise Adaltas durant mon stage se déroulant du 14 avril au 30 août 2020. Dans le cadre du stage, j'ai pu participer à l’architecture et au déploiement des différents composants d'un cluster en prenant en compte les impératifs de sécurité, la tolérance aux pannes et les performances. Pour assurer l’exploitation de la plateforme, j'ai mis en place des chaînes de traitement en streaming pour collecter, traiter, afficher et alerter à partir des évènements émis par le système.\\
-
-La thématique de ce stage s’inscrit dans un contexte d’appréhension et d'approfondissement du monde de l’entreprise. Dans ce rapport, nous présenterons dans un premier temps, le contexte du stage, c’est-à-dire que nous décrirons l’entreprise d’accueil, nous étudierons son secteur d’activité et sa culture. Dans un second temps, nous traduirons les différents aspects de ma mission et les attentes de l'entreprise. Finalement, nous verrons les compétences et qualités acquises à la suite de ce travail ainsi que ma valeur ajoutée pour l'entreprise.
+La thématique de ce stage s’inscrit dans un contexte d’appréhension et d'approfondissement du monde de l’entreprise. Dans ce rapport, nous présenterons dans un premier temps, le contexte du stage, c’est-à-dire que nous décrirons l’entreprise d’accueil, nous étudierons son secteur d’activité et sa culture. Dans un second temps, nous traduirons les différents aspects de ma mission et les attentes de l'entreprise. Finalement, nous verrons les compétences et qualités acquises à la suite de ce travail ainsi que ma valeur ajoutée pour Adaltas.
 
 \chapter{Présentation de la structure d'accueil: Adaltas}
 
@@ -336,13 +360,9 @@ Adaltas préserve un esprit familial qui privilégie toujours une vision à long
 
 Le respect de ces valeurs est l’une des clefs de la performance d'Adaltas, de son ancrage dans l’air du temps et dans la société qui l'entoure.
 
-\section{Par rapport à l'épidémie de Covid-19}
-
-La réponse d'Adaltas face à l'épidémie de Covid-19 qui a touché la France au début de l'année 2020 était remarquable. La mise en place du télé-travail durant la période de confinement n'a pas affecté le déroulement de mon stage. Au contraire, j'ai apprécié la flexibilité apportée par le télé-travail et ai observé une augmentation de ma productivité durant cette période. Suite au déconfinement, j'ai demandé à continuer à travailler à distance. Au vu de mes prestations, David Worms a accepté ma requête.
-
 \chapter{Présentation de la mission}
 
-La mission principale de mon stage se concentrait autour du développement du logiciel d'automatisation de déploiement Nikita. Plus précisément, il s'agissait de migrer plusieurs packages, modules et actions ainsi que de \textit{refactor} une partie du code vers une nouvelle version du logiciel.
+La mission principale de mon stage consistait à automatiser le déploiement d'un cluster Big Data basé sur Apache \gls{hadoop}.
 
 \section{Cahier des charges}
 
@@ -361,7 +381,7 @@ Sur la base des différents objectifs présentés précédemment, un cahier des 
 Le découpage temporel des missions, proposé au début du stage est décrit sur la figure \ref{fig:planning}. Ce planning a été formulé en fonction de ma progression prévisionnelle de l'apprentissage des technologies nécessaires au développement de Nikita. Lesdites technologies seront étudiées en détail ci-après.
 
 \begin{figure}[h]
-\includegraphics[scale=0.6]{assets/img/planning.png}
+\includegraphics[scale=0.6]{assets/img/logo-hadoop.png}
 \centering
 \caption{Planning sous forme de diagramme de Gantt}
 \label{fig:planning}
@@ -369,368 +389,176 @@ Le découpage temporel des missions, proposé au début du stage est décrit sur
 
 \section{Environnement de travail}
 
-La plus grande partie de mon stage s'est déroulée à distance. Quand j'étais sur les lieux de l'entreprise, j'ai eu l'opportunité de rencontrer et d'interagir de façon privilégiée avec les différentes collaborateurs. Les bureaux à Meudon étant en cours de construction, les locaux se situent actuellement à Boulogne-Billancourt, près du Pont de Sèvres, dans un bâtiment qui loue des espaces de travail. Habituellement, David, Prisca et les stagiaires sont les seuls présents dans les locaux étant donné que les consultants sont en mission chez les clients.
-
-Adaltas a suivi toutes les recommandations des collectivités locales et de l’Organisation mondiale de la Santé (OMS) pour mettre en place des mesures d’hygiène et de distanciation physique dans les locaux, afin d’offrir à ses collaborateurs un environnement de travail plus sûr. Ainsi, nous avons dû nous organiser à l'avance pour établir un calendrier de présence au bureau.
-
-Les employés d’Adaltas ont des échanges quotidiens via le chat interne de l’entreprise (Keybase\footnote{\href{https://keybase.io/}{https://keybase.io/}}). Ainsi, j'ai pu solliciter l'expertise de chacun lorsque j'ai rencontré des difficultés.
+La plus grande partie de mon stage s'est déroulée à distance. Quand j'étais sur les lieux de l'entreprise, j'ai eu l'opportunité de rencontrer et d'interagir de façon privilégiée avec les différentes collaborateurs. Les employés d’Adaltas ont des échanges quotidiens via le chat interne de l’entreprise (Keybase\footnote{\href{https://keybase.io/}{https://keybase.io/}}). Ainsi, j'ai pu solliciter l'expertise de chacun lorsque j'ai rencontré des difficultés.
 
 Nous avions un meeting tous les deux jours pour faire un point sur l'avancée de nos missions. Cette réunion dure entre 15 et 20 minutes. Chaque membre de l'équipe prend la parole à tour de rôle et décrit au reste de l’équipe ce qu’il a fait la veille, les objectifs qui ont été atteints, ce qu’il prévoit de faire le reste de la journée avec les nouveaux objectifs, et les éventuels problèmes qu’il rencontre. De cette façon, il est facile de savoir qui peut lui venir en aide et comment, afin de résoudre ses problèmes et de lui permettre d’avancer de nouveau.
 
 \section{Environnement de développement}
 
-Pour remplir ma mission, Adaltas a mis à ma disposition un ordinateur à la pointe de la technologie. Il s'agit d'une machine de la marque Dell comportant les caratéristiques suivantes :
+Pour remplir ma mission, Adaltas a mis à ma disposition un ordinateur à la pointe de la technologie. Il s'agit d'une machine de la marque Dell comportant les caratéristiques décrite dans la table \ref{tab:caractéristiques}.
 
-\begin{itemize}
-  \item[--] Processeur Intel Core i7-9750H de 9e génération;
-  \item[--] Disque SSD hautes performances M.2 PCIE 40 de 1 To;
-  \item[--] 32 Go de mémoire, 2 x 16 Go, DDR4 à 2 666 MHz.\\
-\end{itemize}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Type de Hardware}} & \multicolumn{1}{c|}{\textbf{Caractéristiques techniques}}                          \\ \hline
+Processeur                                      & Processeur Intel Core i7-9750H de 9e génération                                    \\ \hline
+Disque                                          & Disque SSD hautes performances M.2 PCIE 40 de 1 To                                 \\ \hline
+Mémoire                                         & 32 Go de mémoire, 2 x 16 Go, DDR4 à 2 666 MHz                                      \\ \hline
+\end{tabular}
+\caption{Caractéristiques techniques du matériel mis à disposition.}
+\label{tab:caractéristiques}
+\end{table}
 
-Ces spécifications techniques sont nécessaires car les stagiaires sont amenés à créer des clusters Big Data avec plusieurs noeuds nécessitant une plus grande puissance de calcul. Au début de mon stage, j’ai dû installer \gls{arch} sur cet ordinateur. L’installation  habituellement assez périlleuse car il faut mettre en place un grand nombre de services manuellement (notamment les services réseaux et l’interface graphique). Pour faire face à cela, Adaltas a développé une solution nommée Nikita Arch\footnote{\href{https://github.com/adaltas/node-nikita-arch}{https://github.com/adaltas/node-nikita-arch}}, un logiciel de déploiement pour le système d'exploitation \gls{arch}. \gls{arch} est plus simple que Debian ou Ubuntu car \gls{pacman} ne touche pas à la configuration des paquets (ce que fait \gls{dpkg}). \gls{arch} est plus tolérant que Debian à propos des paquets "non-libres" tels que définis par \gls{gnu}. Il est optimisé pour x86\_64, et donc est plus rapide que Debian (i386). Les paquets d'\gls{arch} sont plus récents que les paquets Debian. En revanche Debian est largement plus stable, c'est pour ça qu'il est généralement utilisé pour les serveurs.
+Ces spécifications techniques sont nécessaires car les consultants sont amenés à créer des clusters Big Data avec plusieurs noeuds nécessitant une plus grande puissance de calcul. Au début de mon stage, j’ai dû installer \gls{arch} sur cet ordinateur. L’installation  habituellement assez périlleuse car il faut mettre en place un grand nombre de services manuellement (notamment les services réseaux et l’interface graphique). Pour faire face à cela, Adaltas a développé une solution nommée Nikita Arch\footnote{\href{https://github.com/adaltas/node-nikita-arch}{https://github.com/adaltas/node-nikita-arch}}, un logiciel de déploiement pour le système d'exploitation \gls{arch}. \gls{arch} est plus simple que Debian ou Ubuntu car \gls{pacman} ne touche pas à la configuration des paquets (ce que fait \gls{dpkg}). \gls{arch} est plus tolérant que Debian à propos des paquets "non-libres" tels que définis par \gls{gnu}. Il est optimisé pour x86\_64, et donc est plus rapide que Debian (i386). Les paquets d'\gls{arch} sont plus récents que les paquets Debian. En revanche Debian est largement plus stable, c'est pour ça qu'il est généralement utilisé pour les serveurs.
 
-\chapter{Déroulement de la mission}
+\chapter{Installation}
 
-Cette partie décrit les activités effectuées dans le cadre du stage. La plupart d'entre elles ont été réalisées simultanément. La description "chronologique" qui suit est donc très relative.
+Ce chapitre couvre la description et l'installation de tous les outils nécessaires à ce projet. Tous les logiciels et paquets utilisés sont des logiciels Open Source et sont disponibles gratuitement.
 
-\section{Présentation des outils utilisés}
+\section{vim}
 
-\subsection{vim}
+\begin{figure}[h]
+\includegraphics[scale=0.1]{assets/img/logo-vim.png}
+\centering
+\caption{Logo de vim.}
+\label{fig:logo-adaltas}
+\end{figure}
 
-Développement d'application implique environnement de développement « intégré » (abrégé EDI en français ou IDE en anglais, pour \textit{integrated development environment}). Un bon IDE permet d'augmenter la productivité des développeurs. Il comporte un éditeur de texte destiné à la programmation, des fonctions qui permettent, par pression sur un bouton, de démarrer le compilateur ou l'éditeur de liens ainsi qu'un débogueur en ligne, qui permet d'exécuter ligne par ligne le programme en cours de construction.
-
-Vim est un éditeur de texte directement inspiré de vi (un éditeur très répandu sur les systèmes d’exploitation de type Unix). Son nom signifie d’ailleurs Vi IMproved, que l’on peut traduire par « VI aMélioré ». A priori, Vim n'est pas un IDE mais un simple éditeur de texte. Cette affirmation serait vraie si Vim n'était pas autant personnalisable. En effet, l'ajout  d'extensions, ou la modification de son fichier de configuration en fait un environnement de développement optimal. L'avantage est qu'il n'est pas nécessaire de maîtriser plusieurs IDE, Vim suffit.
+Vim est un éditeur de texte directement inspiré de vi (un éditeur très répandu sur les systèmes d’exploitation de type Unix). Son nom signifie d’ailleurs Vi IMproved, que l’on peut traduire par « VI aMélioré ». A priori, Vim n'est pas un IDE mais un simple éditeur de texte. Néanmoins, l'ajout  d'extensions, ou la modification de son fichier de configuration en fait un environnement de développement optimal. L'avantage est qu'il n'est pas nécessaire de maîtriser plusieurs IDE, Vim suffit.
 
 Etant déjà que j'avais déjà quelques notions de Vim avant mon stage, j'ai été chargé de rédiger un tutoriel sur le site du cloud d'Adaltas. Cette introduction est destinée aux personnes n'ayant jamais utilisé Vim. Voici le \href{https://www.adaltas.cloud/en/docs/foundations/vim/}{lien} vers mon tutoriel.
 
-\subsection{git}
+\section{git}
+
+\begin{figure}[h]
+\includegraphics[scale=0.1]{assets/img/logo-git.png}
+\centering
+\caption{Logo de git.}
+\label{fig:logo-adaltas}
+\end{figure}
 
 Git est un outil de contrôle de version similaire à \href{https://en.wikipedia.org/wiki/Concurrent_Versions_System}{CVS}, \href{https://subversion.apache.org/}{Subversion} et \href{https://www.mercurial-scm.org/}{Mercurial}. Cette famille d'outils s'appelle Système de Contrôle de Version (SCV) ou Gestion du Contrôle des Sources (GCS). Un contrôle de version permet de garder une trace des modifications apportées à un ou plusieurs fichiers au fil du temps afin de pouvoir accéder ultérieurement à une version spécifique. Voici quelques exemples : un développeur veut garder une trace de l'évolution de son code ; un ingénieur DevOps veut déclencher des tests sur les changements publiés et déployer de nouvelles versions à partir de points d'accès bien définis de l'historique du logiciel ; un développeur web a besoin de stocker chaque version d'une image ou d'une mise en page ; un ingénieur infrastructure veut stocker et garder une trace de ses procédures de déploiement et des changements de configuration ; un Data Scientist veut enregistrer toutes ses expériences et les évolutions des fonctionnalités. Chez Adaltas, la procédure d'installation des systèmes \gls{arch} utilisée sur la majorité de nos ordinateurs portables est stockée et partagée sur un dépôt public.
 
-\subsection{NodeJS}
+\section{VirtualBox}
 
-\gls{nodejs} est une plateforme logicielle libre en JavaScript orientée vers les applications réseau événementielles hautement concurrentes qui doivent pouvoir monter en charge. Autrement dit, il s'agit d'un programme (écrit essentiellement en C/C++) qui est capable de lire du code JavaScript, de le compiler en JIT et d’exécuter les instructions correspondantes. Un tel programme s’appelle techniquement un environnement d’exécution.
+\begin{figure}[h]
+\includegraphics[scale=0.2]{assets/img/logo-virtualbox.png}
+\centering
+\caption{Logo de \gls{virtualbox}.}
+\label{fig:logo-adaltas}
+\end{figure}
 
-Contrairement à une idée répandue, \gls{nodejs} n’est pas que du \gls{javascript} côté serveur. Il est possible d'écrire des applications \gls{nodejs} "clientes", comme un client de messagerie. Par ailleurs, la plupart des outils en ligne de commande de l’écosystème \gls{javascript} sont développés pour \gls{nodejs}.
+Oracle VM \gls{virtualbox} est une application de virtualisation multiplateforme open-source. Le logiciel s'installe sur une machine physique basée sur Intel ou AMD, qu'elle fonctionne sous les systèmes d'exploitation (OS) Windows, Mac OS X, Linux ou Oracle Solaris. \gls{virtualbox} étend les capacités de la machine hôte afin d'y exécuter plusieurs OS, dans plusieurs machines virtuelles, en même temps. À titre d'exemple, il est possible d'exécuter Windows et Linux sur Mac, d'exécuter Windows Server 2016 sur un serveur Linux, d'exécuter Linux sur un PC Windows, et ainsi de suite, le tout aux côtés des applications existantes. Il est possible d'installer et d'exécuter autant de machines virtuelles que souhaité. Les seules limites pratiques sont l'espace disque et la mémoire. La capture d'écran de la figure \ref{fig:example-vbox} montre comment \gls{virtualbox}, installé sur un ordinateur Microsoft Windows 10, exécute Ubuntu 20.04 dans une machine virtuelle.
 
-\section{Présentation de Nikita}
+\begin{figure}[h]
+\includegraphics[scale=0.2]{assets/img/example-vbox.png}
+\centering
+\caption{Exemple d'utilisation de \gls{virtualbox}.}
+\label{fig:example-vbox}
+\end{figure}
 
-Nikita est une librairie d’automatisation pour le déploiement de systèmes pour \gls{nodejs}. Le logiciel est développé en \gls{javascript}. Le développement a commencé lorsqu'Adaltas a déployé un cluster \gls{hadoop} pour l’un de ses clients en 2011. Les actions Nikita sont variées : créer un dossier, générer un fichier, initier un service \textit{systemd}, ajouter une règle de pare-feu \textit{iptable}, etc.
+L'utilisation de la virtualisation est un avantage majeur dans le domaine du Big Data étant donné que cela permet de mettre en place des environnements de développement et de test rapidement et de les supprimer sans complexité.
+
+\section{Vagrant}
+
+\begin{figure}[h]
+\includegraphics[scale=0.5]{assets/img/logo-vagrant.png}
+\centering
+\caption{Logo de \gls{vagrant}.}
+\label{fig:logo-adaltas}
+\end{figure}
+
+\gls{vagrant} est un outil permettant de créer et de gérer des environnements de machines virtuelles. \gls{vagrant} réduit le temps de configuration de l'environnement de développement et automatise le déploiement de plusieurs machines virtuelles. \gls{vagrant} fournit des environnements de travail faciles à configurer, reproductibles et portables afin d'optimiser la productivité et la flexibilité.
+
+Pour créer et gérer des machines virtuelles, nous utilisons un \texttt{Vagrantfile}. La fonction principale du fichier \texttt{Vagrantfile} est de décrire le type de machine requis pour un projet, ainsi que la manière de configurer et de provisionner ces machines. \gls{vagrant} fonctionne avec un \texttt{Vagrantfile} par projet, et le fichier est sauvegardé dans le contrôle de version. Cela permet aux autres développeurs impliqués dans le projet de vérifier le code. Les fichiers \texttt{Vagrantfile} sont portables sur toutes les plateformes supportées par \gls{vagrant}. La syntaxe des \texttt{Vagrantfile} est Ruby, mais la connaissance du langage de programmation Ruby n'est pas nécessaire pour apporter des modifications au fichier, puisqu'il s'agit principalement de simples affectations de variables. La figure \ref{fig:example-vagrantfile} montre un exemple de fichier \texttt{Vagrantfile} utilisé pour un cluster de développement.
 
 \begin{figure}[h]
 \begin{verbatim}
-CHANGELOG.md
-lerna.json
-LICENSE
-package.json
-packages/
-  core/
-  db/
-  docker/
-  engine/
-  file/
-  filetypes/
-  ipa/
-  java/
-  krb5/
-  ldap/
-  lxd/
-  nikita/
-  service/
-  tools/
-README.md
-yarn.lock
+box = "centos/7"
+
+Vagrant.configure("2") do |config|
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.ssh.insert_key = false
+  config.vm.box_check_update = false
+  config.vm.define :master01 do |node|
+    node.vm.box = box
+    node.vm.network :private_network, ip: "10.10.10.11"
+    node.vm.provider "virtualbox" do |d|
+      d.memory = 8192
+    end
+    node.vm.hostname = "master01.nikita.local"
+  end
+  config.vm.define :worker01 do |node|
+    node.vm.box = box
+    node.vm.network :private_network, ip: "10.10.10.16"
+    node.vm.provider "virtualbox" do |d|
+      d.customize ["modifyvm", :id, "--memory", 2048]
+      d.customize ["modifyvm", :id, "--cpus", 2]
+      d.customize ["modifyvm", :id, "--ioapic", "on"]
+    end
+    node.vm.hostname = "worker01.nikita.local"
+  end
+end
 \end{verbatim}
 \centering
-\caption{Structure de fichiers Nikita}
-\label{fig:nikitaFileStructure}
+\caption{Exemple de fichier \texttt{Vagrantfile}.}
+\label{fig:example-vagrantfile}
 \end{figure}
 
-Nikita est organisée comme un seul et unique dépôt multi-packages (monorepo) hébergé sur \gls{github}\footnote{\href{https://github.com/adaltas/node-nikita}{https://github.com/adaltas/node-nikita}}. La figure \ref{fig:nikitaFileStructure} représente la structure du monorepo. Il comprend le moteur de base, les actions des utilisateurs et les fonctions utilitaires. Tous ces éléments sont associés à leurs tests unitaires. Lerna\footnote{\href{https://github.com/lerna/lerna}{https://github.com/lerna/lerna}} est utilisé pour diviser le projet en packages indépendants. Cela permet d'optimiser les besoins en temps et en espace, permettant un refactoring massif, une mise à jour et un enrichissement des fonctionnalités plus efficace. La figure \ref{code:example} représente un exemple d'une action Nikita.
+Les Box sont le format de paquetage des environnements \gls{vagrant}. Une Box peut être utilisée par n'importe qui, sur n'importe quelle plate-forme prise en charge par \gls{vagrant}, pour créer un environnement de travail. Le moyen le plus simple d'utiliser une Box est d'en ajouter une à partir du catalogue accessible au public. Pour la création du cluster, j'ai utilisé la Box \gls{centos} version 7 car c'est l'une des distributions Linux la plus stable et rapide à configurer.
 
-\begin{figure}[H]
-\begin{lstlisting}[language=JavaScript]
-nikita = require('nikita')
-nikita.call({
-  who: 'leon'
-}, function({options}){
-    console.info(options.who)
-  }
-)
-\end{lstlisting}
-\centering
-\caption{Exemple de code Nikita}
-\label{code:example}
-\end{figure}
-
-\subsection{Les packages}
-
-Comme évoqué précédemment, Nikita est divisée en plusieurs packages. Chaque package a un domaine d'application spécifique. Par exemple, le package \texttt{core} comporte les actions génériques, il permet de travailler sur des objets \gls{javascript}, modifier des fichiers, etc. Le package \texttt{docker} contient des actions liées à \gls{docker}. Le package \texttt{file}, que je suis chargé de migrer, comporte des actions permettant de travailler sur le système de fichier. Par exemple, nous pouvons y trouver des fonctions pour créer un fichier, supprimer un répertoire, télécharger un document, etc.
-
-\subsection{Les actions}
-
-Une action est un élément fondamental dans Nikita. Il s'agit essentiellement d'une fontion que nous appelons \texttt{handler} et des metadonnées associées appelées \texttt{options} ou \texttt{config}. Les actions génériques et bas niveau se situent dans le package \texttt{engine}. Par exemple, dans \texttt{engine/src/actions/fs/base/mkdir.coffee.md}, nous trouvons l'action \texttt{mkdir} qui permet de créer un répertoire.
-
-\section{Prise en main de Nikikta}
-
-Ma première activité consistait à comprendre la logique de Nikita. Pour pouvoir m'approprier et faire évoluer ce logiciel, il me fallait tout d'abord comprendre sa manière de fonctionner. Pour ce faire, j'ai dans un premier temps suivi les instructions du tutoriel\footnote{\href{https://nikita.js.org/about/tutorial/}{https://nikita.js.org/about/tutorial/}} disponible sur le site internet. L'utilisation de Nikita nécessite l'installation de \gls{nodejs} et de \gls{npm} ou \gls{yarn}. Ayant déjà utilisé ces technologies dans plusieurs cours dispensés à l'ECE, j'étais familié avec l'environnement de développement de Nikita fort de quoi j'ai pu avancer à un rythme plus soutenu durant ce tutoriel. Le fonctionnement de Nikita est fondé autour des fichiers. Toutes les actions de la librairie touchent de près ou de loin à un fichier. Ainsi, il est possible de suivre le déroulement d'une session Nikita en observant les modifications effectuées sur les différents fichiers.
-
-Nikita est exécutée par le moteur \gls{nodejs}. Cela signifie que le développement du logiciel nécessite des connaissances en \gls{javascript}. Fort heureusement, les enseignements de l'ECE couvrent également les bases de ce langage de programmation. De surcroît, j'ai utilisé à titre personnel le langage \gls{javascript} pour plusieurs projets. J'avais donc des fondations solides pour me lancer dans le code source. C'est en tout cas ce que je pensais. Il s'avère que, même s'il est possible d'utiliser Nikita en travaillant en \gls{javascript}, le code source est écrit en \gls{coffeescript}, un langage de programmation, qui se compile en \gls{javascript}. En d'autres termes, le code écrit en \gls{coffeescript} est transformé en \gls{javascript}. Cela étant dit, les syntaxes entres ces deux langages sont très similaires comme le montre la figure \ref{code:jscoffeecomparison}.
-
-\begin{figure}[H]
-\begin{minipage}{0.45\textwidth}
-\begin{lstlisting}[language=JavaScript]
-a = 2
-square = (x) -> x * x
-b = square a
-console.log b // 4
-\end{lstlisting}
-\end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-\begin{lstlisting}[language=JavaScript]
-var a, b, square;
-a = 2;
-square = function(x) {
-  return x * x;
-};
-b = square(a);
-console.log(b); // 4
-\end{lstlisting}
-\end{minipage}\hfill
-\centering
-\caption{Comparaison de code \gls{javascript} et \gls{coffeescript}}
-\label{code:jscoffeecomparison}
-\end{figure}
-
-\gls{coffeescript} a une syntaxe très claire et se prête parfaitement à l'aspect déclaratif de Nikita. Somme toute, le code source ressemble à du \gls{yaml}, ce qui le rend beaucoup plus lisible tout en préservant les avantages d'un langage procédural tel que le \gls{javascript}. Un autre avantage de \gls{coffeescript} est qu'il permet d'intégrer la documentation liée à une action directement dans le code source.
-
-Ma première mission pour prendre en main Nikita était la migration d'une action de Nikita Arch\footnote{\href{https://github.com/adaltas/node-nikita-arch}{https://github.com/adaltas/node-nikita-arch}} vers Nikita dans le package \texttt{core}. Les actions contenues dans le dépôt Nikita Arch sont indépendantes et, de façon générale, plus simple que celles sur Nikita. J'ai ainsi pu me familiariser avec la logique et syntaxe du logiciel. Dans ce cas précis, je n'ai pas eu à écrire de nouveau code. Je devais prendre le code existant, le copier vers le package \texttt{core} et modifier certaines lignes relatives à l'environnement d'exécution. J'étais également chargé d'écrire des tests unitaires. Il s'agit d'une procédure permettant de vérifier le bon fonctionnement d'une partie précise du logiciel (appelée « unité » ou « module »). Reprenons l'exemple de la figure \ref{code:jscoffeecomparison}. Ce code décrit une fonction \texttt{square} dont le but est d'élever au carré l'entier qui est passé par paramètre. Le test unitaire le plus basique serait de vérifier que si l'on envoie le chiffre 3 dans cette fonction, cette dernière retourne le chiffre 9. L'objectif final est de "blinder" le code, c'est-à-dire vérifier qu'il se comporte comme le développeur l'a prévu. L'éciture de tests unitaires permet de trouver rapidement les erreurs au sein du code, de sécuriser la maintenance et finalement de documenter le code. Ils peuvent servir de complément à l'\gls{api}, il est très utile de lire les tests pour comprendre comment s'utilise une méthode. De plus, il est possible que la documentation ne soit plus à jour, mais les tests eux correspondent à la réalité de l'application. C'est d'ailleurs ce que m'avait conseillé mon maître de stage durant ma montée en compétences sur le logiciel Nikita.
-
-\section{Migration du package \texttt{file}}
-
-Comme défini précédemment, la migration du package \texttt{file} était ma mission principale au cours de ce stage. Par "migration", nous entendons le passage d'une partie du code d'une certaine version à une autre version. En l'occurence, \texttt{file} était une action contenue dans le package \texttt{core}. Ce dernier a disparu dans la nouvelle version de Nikita, il fallait donc déplacer toutes les actions le composant. Une grande partie du code avait déjà été migré avant mon arrivée chez Adaltas vers un nouveau package nommé \texttt{engine}. Ce dernier se différencie de l'ancienne version du logiciel de par la modification de l'implémentation du moteur de Nikita.
-
-\subsection{Architecture du package}
-
-La structure des fichiers du package \texttt{file} est décrite dans la figure \ref{fig:fileStructure}.
+\section{Ansible}
 
 \begin{figure}[h]
-\begin{verbatim}
-env/
-node_modules/
-package.json
-src/
-  cache.coffee.md
-  cson.coffee.md
-  download.coffee.md
-  index.coffee.md
-  ini.coffee.md
-  json.coffee.md
-  properties/
-    index.coffee.md
-    read.coffee.md
-  register.coffee
-  render.coffee.md
-  touch.coffee.md
-  upload.coffee.md
-  utils/
-    curl.coffee
-    diff.coffee.md
-    index.coffee
-  yaml.coffee.md
-test/
-test.coffee
-\end{verbatim}
+\includegraphics[scale=0.07]{assets/img/logo-ansible.png}
 \centering
-\caption{Structure de fichiers du package file}
-\label{fig:fileStructure}
+\caption{Logo de \gls{ansible}.}
+\label{fig:logo-ansible}
 \end{figure}
 
-Le dossier \texttt{env} comporte des environnements de développement et de tests indépendants du système du développeur. Il s'agit d'un conteneur \gls{docker} qui étend le format de conteneur Linux standard, LXC, avec une \gls{api} de haut niveau fournissant une solution pratique de virtualisation qui exécute les processus de façon isolée. Les tests unitaires évoqués précédemment sont exécutés au sein de ces conteneurs, cela afin d'être sûr que Nikita fonctionne sur tous les systèmes d'exploitations.
+\gls{ansible} est un logiciel d'automatisation informatique qui automatise le provisionnement des clouds, la gestion de la configuration, le déploiement des applications, l'orchestration intra-service et de nombreux autres besoins informatiques. \gls{ansible} fonctionne en se connectant aux nœuds et en leur envoyant des scripts, appelés "modules Ansible". Ces programmes sont écrits pour être des modèles de ressources de l'état souhaité du système. Ansible exécute ensuite ces modules (via SSH par défaut), et les supprime une fois terminés.
 
-Les modules npm et leurs dépendances sont stockés dans un répertoire \texttt{node\_modules}. Par exemple, l'action \texttt{index} nécessite une dépendance appelée \texttt{fs}. Le module \texttt{fs} permet d'interagir avec le système de fichiers d'une manière modelée sur les fonctions POSIX standard. Ce module est téléchargé puis décompressé dans le dossier \texttt{node\_modules} afin que l'application puisse y accéder rapidement.
-
-Tous les paquets npm contiennent un fichier, généralement à la racine du projet, appelé \texttt{package.json}. Ce fichier contient diverses métadonnées pertinentes pour le projet. Il est utilisé pour donner des informations à npm qui lui permettent d'identifier le projet ainsi que de gérer les dépendances du projet. Il peut également contenir d'autres métadonnées telles qu'une description du projet, la version du projet dans une distribution particulière, des informations sur la licence, voire des données de configuration - tout cela peut être vital à la fois pour npm et pour les utilisateurs finaux du paquet. Le fichier \texttt{package.json} est normalement situé dans le répertoire racine d'un projet \gls{nodejs}.
-
-Le répertoire \texttt{src} contient le code source des différentes actions contenues dans \texttt{file}. L'action \texttt{index} correspond à l'action principale du package. Elle permet de créer, modifier et supprimer un fichier. Les autres actions du package sont éponymes. Ci-dessous une liste des fonctionnalités :
-
-\begin{description}
-\item[\texttt{cache}] Télécharge un fichier et le place dans un dossier local ou distant pour une utilisation ultérieure.
-\item[\texttt{cson}] Ecrit le contenu d'un objet \texttt{cson} dans un fichier. L'objet en question peut être sujet à modifications.
-\item[\texttt{download}] Télécharge un fichier en utilisant différents protocoles.
-\item[\texttt{index}] Ecrit, modifie ou supprime un fichier ou une partie d'un fichier.
-\item[\texttt{ini}] Écrit un objet sous forme de fichier \texttt{.ini}.
-\item[\texttt{json}] Ecrit le contenu d'un objet \texttt{json} dans un fichier.
-\item[\texttt{properties.index}] Ecrit un fichier au format des propriétés Java.
-\item[\texttt{properties.read}] Lit un fichier au format des propriétés Java.
-\item[\texttt{render}] Génère un fichier selon un modèle.
-\item[\texttt{touch}] Crée un fichier vide s'il n'existe pas.
-\item[\texttt{upload}] Upload un fichier vers un emplacement distant.
-\item[\texttt{yaml}] Ecrit un objet sérialisé au format \gls{yaml}.
-\end{description}
-
-Le dossier \texttt{utils} contient des fonctions utilitaires permettant par exemple de simplifier des objets JSON en supprimant les propriétés dont les valeurs sont \texttt{null} ou \texttt{undefined} ou encore d'afficher les différences entre deux textes.
-
-Le répertoire \texttt{test} contient les tests unitaires associés aux actions du package \texttt{file}.
-
-Enfin, le fichier \texttt{test.coffee} contient les intructions et configurations pour l'exécution des tests unitaires.
-
-\subsection{Workflow de la migration}
-
-La migration du package s'est faite par action. J'ai créé une nouvelle branche sur \gls{git} pour chaque module. Après avoir \textit{refactor} le code source et les tests unitaires d'une action, j'ai push la branche sur \gls{github} et attendu l'examen de mon travail. L'avantage de cette méthodologie est que l'examinateur du code peut revenir sur chaque ligne de code et ajouter un commentaire. Après un certain nombre d'aller-retours, la branche est fusionnée avec la branche principale puis supprimée. Ce workflow est décrit dans la figure \ref{fig:gitbranches}.
-
+\section{Hadoop}
 
 \begin{figure}[h]
-\begin{verbatim}
-                       A---B---C index
-                      /         \
-                     D---E---F---G---H master
-\end{verbatim}
+\includegraphics[scale=0.2]{assets/img/logo-hadoop.png}
 \centering
-\caption{Représentation des branches sur \gls{github}}
-\label{fig:gitbranches}
+\caption{Logo de \gls{hadoop}.}
+\label{fig:logo-hadoop}
 \end{figure}
 
-Dans l'exemple décrit par la figure \ref{fig:gitbranches}, nous avons créé une branche \texttt{index} à partir de la branche \texttt{master} sur laquelle nous développons l'action du même nom. Observons que des commits sont ajoutés à la branche \texttt{master} alors que nous travaillons sur une branche parallèle. Il est important de \textit{rebase} la branche \texttt{index} avant de pouvoir la fusionner avec la branche \texttt{master} pour conserver les modifications apportées à cette dernière et les appliquer à notre nouvelle branche.
-
-\subsection{Migration d'une action du package}
-
-Une action est composée de plusieurs éléments :
-
+Apache \gls{hadoop} est un logiciel open-source pour le stockage et le traitement à grande échelle d'ensembles de données sur des clusters. Il est composé des modules suivants :
 \begin{itemize}
-\item [--] \textbf{hook} : vérifie la configuration passée à l'action et ajoute les valeurs par défaut.
-\item [--] \textbf{schema} : décrit la configuration de l'action.
-\item [--] \textbf{handler} : implémente la logique de l'action.
-\item [--] \textbf{exports} : exporte les composants de l'action.
-\item [--] \textbf{dependencies} : décrit les dépendances de l'action.\\
+  \item[--] Hadoop Common : contient des bibliothèques et des utilitaires nécessaires aux autres modules Hadoop.
+  \item[--] Hadoop YARN : une plateforme de gestion des ressources chargée de gérer les ressources de calcul dans les clusters et de les utiliser pour la programmation des applications des utilisateurs.
+  \item[--] Hadoop MapReduce : un modèle de programmation pour le traitement de données à grande échelle.
+  \item[--] Hadoop Distributed File System (HDFS) : un système de fichiers distribué qui stocke les données sur des machines de base, offrant une bande passante globale très élevée dans le cluster.\\
 \end{itemize}
 
-Prenons l'exemple d'une action simple telle que \texttt{touch}. Pour rappel, ce module permet de créer un fichier s'il n'existe pas.
+\subsection{Stack Hadoop}
 
-Tout d'abord, traitons du \textbf{schema} de \texttt{touch}. Il est décrit dans la figure \ref{code:touchSchema}. Nous y retrouvons les différentes propriétés de l'action, le type associé ainsi qu'une description. Prenons l'exemple de la propriété \texttt{target}. Cette dernière doit être du type \texttt{string}, c'est-à-dire une chaîne de caractères, ou bien une fonction qui retourne une chaîne de caractères. \texttt{target} correspond au chemin local ou distant vers lequel le fichier sera écrit s'il n'existe pas à cet endroit. Les autres propriétés existent déjà dans d'autres actions Nikita. Afin d'éviter toute redondance, nous définissons un lien vers la définition de ces attributs.
+Le stack technologique Hadoop est constituée des éléments suivants :
 
-\begin{figure}[h]
-\begin{lstlisting}[language=JavaScript]
-schema =
-  type: 'object'
-  properties:
-    'gid':
-      $ref: 'module://@nikitajs/engine/src/actions/fs/base/chown#/properties/gid'
-    'mode':
-      $ref: 'module://@nikitajs/engine/src/actions/fs/base/chmod#/properties/mode'
-    'target':
-      oneOf: [{type: 'string'}, {typeof: 'function'}]
-      description: """
-      File path where to write file or a function that returns a valid file path.
-      """
-    'uid':
-      $ref: 'module://@nikitajs/engine/src/actions/fs/base/chown#/properties/uid'
-  required: ['target']
-\end{lstlisting}
-\centering
-\caption{Schema de l'action \texttt{touch}}
-\label{code:touchSchema}
-\end{figure}
+\begin{description}
+  \item[HDFS] Le Hadoop Distributed File System est le système de fichiers personnalisé conçu pour l'écosystème \gls{hadoop}, qui prend en charge les blocs de grande taille et coordonne le stockage entre plusieurs nœuds de données.
+  \item[MapReduce] Paradigme de programmation permettant une extensibilité massive sur des centaines ou des milliers de serveurs dans un cluster \gls{hadoop}.
+  \item[Pig] Langage de scripting qui permet aux utilisateurs d'\gls{hadoop} de se concentrer davantage sur l'analyse de grands ensembles de données et de passer moins de temps à écrire des programmes de mappage et de réduction.
+  \item[Hive] Hive permet aux développeurs SQL d'écrire des instructions en Hive Query Language (HQL) qui sont similaires aux instructions SQL standard.\\
+\end{description}
 
-Ensuite, étudions le \textbf{hook}. Pour cette action, il est extrêmement simple. Il consiste uniquement en la modification de la propriété \texttt{target} vue précédemment si et seulement si elle est déjà définie dans les metadonnées de l'action.
+\gls{hadoop} et ses différents composants s'assemblent pour garantir un modèle de stockage et de gestion des Big Data tolérant aux pannes, durable et hautement efficace. Un cluster Big Data peut être décomposé en plusieurs noeuds :
 
-\begin{figure}[h]
-\begin{lstlisting}[language=JavaScript]
-on_action = ({config, metadata}) ->
-  config.target = metadata.argument if metadata.argument?
-\end{lstlisting}
-\centering
-\caption{Hook de l'action \texttt{touch}}
-\label{code:touchHook}
-\end{figure}
-
-A présent, passons à l'implémentation du \textbf{handler} décrit dans la figure \ref{code:touchHandler}. L'action prend en paramètre la configuration telle que définie dans le \textbf{schema} ainsi qu'une fonction \texttt{log} permettant d'afficher des messages lorsque le mode debug est actif. La logique de cette action est décrite dans la figure \ref{fig:touch}. Nous vérifions si le fichier passé dans la configuration existe. Si c'est le cas, alors nous modifions ce fichier grâce à l'action \texttt{index} en supprimant son contenu. Sinon, nous créons un fichier grâce à la commande \texttt{touch}\footnote{\href{https://man7.org/linux/man-pages/man1/touch.1.html}{touch(1) — Linux manual page}} intégrée dans Linux.
-
-\begin{figure}[H]
-\includegraphics[scale=0.5]{assets/img/touch.png}
-\centering
-\caption{Logigramme représentant la logique de l'action \texttt{touch}.}
-\label{fig:touch}
-\end{figure}
-
-\begin{figure}[h]
-\begin{lstlisting}[language=JavaScript]
-handler = ({config, log}) ->
-  log message: "Entering file.touch", level: 'DEBUG', module: 'nikita/lib/file/touch'
-  {status} = await @call ->
-    log message: "Check if target exists \"#{config.target}\"", level: 'DEBUG', module: 'nikita/lib/file/touch'
-    exists = await @fs.base.exists target: config.target
-    log message: "Destination does not exists", level: 'INFO', module: 'nikita/lib/file/touch' if not exists
-    !exists
-  if status
-    @file
-      content: ''
-      target: config.target
-      mode: config.mode
-      uid: config.uid
-      gid: config.gid
-  else
-    @execute
-      cmd: "touch #{config.target}"
-      shy: true
-  {}
-\end{lstlisting}
-\centering
-\caption{Handler de l'action \texttt{touch}}
-\label{code:touchHandler}
-\end{figure}
-
-Enfin, l'action est composée d'une fonction qui exporte tous les éléments présentés précédemment. Cette dernière permet au moteur de Nikita d'exécuter les méthodes dans le bon ordre.
-
-\begin{figure}[h]
-\begin{lstlisting}[language=JavaScript]
-module.exports =
-  handler: handler
-  hooks:
-    on_action: on_action
-  schema: schema
-\end{lstlisting}
-\centering
-\caption{Exports de l'action \texttt{touch}}
-\label{code:touchExports}
-\end{figure}
-
-Les éléments que nous venons d'étudier composent toutes les actions du package \texttt{file}. La logique de migration est toujours la même. La différence réside principalement dans l'implémentation de la logique du \textbf{handler}.
-
-\subsection{Migration des tests associés à une action}
-
-La migration des tests était simple car il ne fallait que réécrire les tests existant de façon légérement différente. Un exemple lié à \texttt{touch} est donné dans la figure \ref{code:testComparison}.
-
-\begin{figure}[H]
-\begin{minipage}{0.45\textwidth}
-\begin{lstlisting}[language=JavaScript]
-nikita
-  ssh: ssh
-.file.touch "#{tmpdir}/file", (err, {status}) ->
-  status.should.be.true() unless err
-.file.assert
-  target: "#{tmpdir}/file"
-  content: ''
-.promise()
-\end{lstlisting}
-\end{minipage}\hfill
-\begin{minipage}{0.45\textwidth}
-\begin{lstlisting}[language=JavaScript]
-nikita
-  ssh: ssh
-  tmpdir: true
-, ({metadata: {tmpdir}}) ->
-  @file.touch "#{tmpdir}/file"
-  .should.be.resolvedWith status: true
-  @fs.assert
-    target: "#{tmpdir}/file"
-    content: ''
-\end{lstlisting}
-\end{minipage}\hfill
-\centering
-\caption{Comparaison d'un test de \texttt{touch} avant/après}
-\label{code:testComparison}
-\end{figure}
+\begin{description}
+  \item[Namenode] Namenode est le nœud qui stocke les métadonnées du système de fichiers, c'est-à-dire quel fichier correspond à quel emplacement de bloc et quels blocs sont stockés sur quel datanode. Le namenode maintient deux tables en mémoire, l'une qui mappe les blocs aux datanodes (un bloc mappe à 3 datanodes pour une valeur de réplication de 3) et une mappe de numéro de bloc à datanode. Chaque fois qu'un nœud de données signale une corruption de disque d'un bloc particulier, la première table est mise à jour et chaque fois qu'un nœud de données est détecté comme étant mort (à cause d'une panne de nœud/réseau), les deux tables sont mises à jour.
+  \item[Secondary Namenode] Le noeud secondaire se connecte régulièrement au noeud primaire et récupère des métadonnées du système de fichiers dans le stockage local ou distant.
+  \item[Datanode] Le Datanode est l'endroit où se trouvent les données.
+\end{description}
+Associés à ces différents types de noeuds, il existe des gestionnaires
+\begin{description}
+  \item[Node Manager] Il s'agit d'un démon yarn qui fonctionne sur des nœuds individuels et reçoit des informations sur les conteneurs de ressources de leurs Datanodes individuels via des démons. Les différentes ressources telles que la mémoire, le temps processeur, la bande passante du réseau, etc. sont regroupées dans une unité appelée conteneur de ressources. Le Node Manager assure à son tour la tolérance aux pannes sur les Datanodes pour tous les travaux MapReduce.
+  \item[Resource Manager] Il s'agit d'un démon yarn qui gère l'allocation des ressources aux différents jobs et qui comprend un planificateur qui s'occupe de la programmation des jobs.
+\end{description}
 
 \chapter*{Bilan et perspectives}
 \addcontentsline{toc}{chapter}{Bilan et perspectives}
@@ -754,7 +582,7 @@ Ma contribution à ce projet à été chaleureusement accueillie par Adaltas. En
 
 \printglossaries
 
-\includegraphics[scale=0.7]{assets/img/eval.png}
+\includegraphics[scale=0.25]{assets/img/evaluation.png}
 
 \end{document}
 
