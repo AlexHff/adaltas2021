@@ -21,6 +21,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: update
+        run: sudo apt-get update
 
       - name: install latex
         run: sudo apt-get install texlive-full xindy
