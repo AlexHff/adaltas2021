@@ -252,6 +252,18 @@
   description={plate-forme logicielle open-source pour la configuration, automatisation et la gestion de machines}
 }
 
+\newglossaryentry{ambari}
+{
+  name=Ambari,
+  description={logiciel pour le provisionnement, la gestion et la surveillance des clusters Apache Hadoop}
+}
+
+\newglossaryentry{hdp}
+{
+  name=HDP,
+  description={Hortonworks Data Platform (HDP) est un logiciel open source pour le stockage et le traitement distribués de grands ensembles de données multi-sources}
+}
+
 \begin{titlepage}
 \title{	\includegraphics[scale=0.4]{assets/img/logo-adaltas.png}\\[1 cm]
 		\normalsize \textsc{Rapport de stage}\\[0.8cm]
@@ -313,7 +325,7 @@ Ce rapport décrit les travaux effectués lors de mon stage de 6 mois chez Adalt
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Mon intérêt pour la data science et plus généralement pour l’informatique et les nouvelles technologies m’a amené à chercher un stage dans une société qui en a fait son cœur de métier. Au sein de l'équipe InfraOps d'Adaltas, j'ai trouvé une opportunité unique pour mettre à profit mes compétences en matière de développement et de conception. J'ai eu la chance de participaer à la création de systèmes et d'outils d'infrastructure pour permettre la mise en production de nouveaux produits qui s'étendent sur des millions d'utilisateurs. Pour assurer l’exploitation de la plateforme, j'ai mis en place des chaînes de traitement en streaming pour collecter, traiter, afficher et alerter à partir des évènements émis par le système.\\
+Mon intérêt pour la data science et plus généralement pour l’informatique et les nouvelles technologies m’a amené à chercher un stage dans une société qui en a fait son cœur de métier. Au sein de l'équipe InfraOps d'Adaltas, j'ai trouvé une opportunité unique pour mettre à profit mes compétences en matière de développement et de conception de logiciels. J'ai eu la chance de participaer à la création de systèmes et d'outils d'infrastructure permettant la mise en production de nouveaux produits qui s'étendent sur des millions d'utilisateurs. Pour assurer l’exploitation de la plateforme, j'ai mis en place des chaînes de traitement en streaming pour collecter, traiter, afficher et alerter à partir des évènements émis par le système.\\
 
 La thématique de ce stage s’inscrit dans un contexte d’appréhension et d'approfondissement du monde de l’entreprise. Dans ce rapport, nous présenterons dans un premier temps, le contexte du stage, c’est-à-dire que nous décrirons l’entreprise d’accueil, nous étudierons son secteur d’activité et sa culture. Dans un second temps, nous traduirons les différents aspects de ma mission et les attentes de l'entreprise. Finalement, nous verrons les compétences et qualités acquises à la suite de ce travail ainsi que ma valeur ajoutée pour Adaltas.
 
@@ -360,28 +372,31 @@ Adaltas préserve un esprit familial qui privilégie toujours une vision à long
 
 Le respect de ces valeurs est l’une des clefs de la performance d'Adaltas, de son ancrage dans l’air du temps et dans la société qui l'entoure.
 
+\section{RSE : Responsabilité Sociétale de l’Entreprise}
+
+\includepdf[pages=-]{assets/pdf/rse.pdf}
+
 \chapter{Présentation de la mission}
 
 La mission principale de mon stage consistait à automatiser le déploiement d'un cluster Big Data basé sur Apache \gls{hadoop}.
 
 \section{Cahier des charges}
 
-Sur la base des différents objectifs présentés précédemment, un cahier des charges a été établi courant avril 2020 par David Worms. Les activités précisées sont les suivantes : 
+Sur la base des différents objectifs présentés précédemment, un cahier des charges a été établi courant février 2021 par David Worms. Les activités précisées sont les suivantes : 
 
 \begin{enumerate}
-  \item Refactoring du code source du package \texttt{engine} afin d'en améliorer la lisibilité et par conséquent, la maintenance, ainsi qu'à le rendre plus générique.
-  \item Migration des actions du module \texttt{file}, initialement contenue dans le package \texttt{core}, vers son propre package.
-  \item Amélioration de la documentation dans les packages \texttt{engine} et \texttt{file} dans le but de la rendre plus complète et compréhensible.
-  \item Conception de tests unitaires permettant de vérifier le bon fonctionnement des packages \texttt{engine} et \texttt{file}.
-  \item Délivrance d'un rapport de stage à l'ECE Paris et à Adaltas.
+  \item Conception et mise en place d’architectures se basant sur des technologies open-source de l'écosystème Big Data ;
+  \item Déploiement manuel d'un cluster \gls{hdp} ;
+  \item Automatisation de l'installation, la configuration et le déploiement d'un cluster \gls{hdp} ;
+  \item Rédaction d’articles pour partager les résultats des recherches.
 \end{enumerate}
 
 \section{Planning}
 
-Le découpage temporel des missions, proposé au début du stage est décrit sur la figure \ref{fig:planning}. Ce planning a été formulé en fonction de ma progression prévisionnelle de l'apprentissage des technologies nécessaires au développement de Nikita. Lesdites technologies seront étudiées en détail ci-après.
+Le découpage temporel des missions, proposé au début du stage est décrit sur la figure \ref{fig:planning}. Ce planning a été formulé en fonction de ma progression prévisionnelle de l'apprentissage des technologies Big Data. Lesdites technologies seront étudiées en détail ci-après.
 
 \begin{figure}[h]
-\includegraphics[scale=0.6]{assets/img/logo-hadoop.png}
+\includegraphics[scale=0.5]{assets/img/gantt.png}
 \centering
 \caption{Planning sous forme de diagramme de Gantt}
 \label{fig:planning}
@@ -418,7 +433,7 @@ Ce chapitre couvre la description et l'installation de tous les outils nécessai
 
 \section{vim}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[scale=0.1]{assets/img/logo-vim.png}
 \centering
 \caption{Logo de vim.}
@@ -431,7 +446,7 @@ Etant déjà que j'avais déjà quelques notions de Vim avant mon stage, j'ai é
 
 \section{git}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[scale=0.1]{assets/img/logo-git.png}
 \centering
 \caption{Logo de git.}
@@ -442,7 +457,7 @@ Git est un outil de contrôle de version similaire à \href{https://en.wikipedia
 
 \section{VirtualBox}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[scale=0.2]{assets/img/logo-virtualbox.png}
 \centering
 \caption{Logo de \gls{virtualbox}.}
@@ -462,7 +477,7 @@ L'utilisation de la virtualisation est un avantage majeur dans le domaine du Big
 
 \section{Vagrant}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[scale=0.5]{assets/img/logo-vagrant.png}
 \centering
 \caption{Logo de \gls{vagrant}.}
@@ -519,9 +534,58 @@ Les Box sont le format de paquetage des environnements \gls{vagrant}. Une Box pe
 
 \gls{ansible} est un logiciel d'automatisation informatique qui automatise le provisionnement des clouds, la gestion de la configuration, le déploiement des applications, l'orchestration intra-service et de nombreux autres besoins informatiques. \gls{ansible} fonctionne en se connectant aux nœuds et en leur envoyant des scripts, appelés "modules Ansible". Ces programmes sont écrits pour être des modèles de ressources de l'état souhaité du système. Ansible exécute ensuite ces modules (via SSH par défaut), et les supprime une fois terminés.
 
-\section{Hadoop}
+Par défaut, Ansible représente les machines gérées en utilisant un fichier INI qui place toutes les machines dans des groupes définis. Le fichier que j'ai utilisé pour le déploiement du cluster est décrit sur la figure \ref{fig:example-ansible-inventory}.
 
 \begin{figure}[h]
+\begin{verbatim}
+[cloudera_manager]
+master01.nikita.local
+
+[cluster_master_nodes]
+master01.nikita.local host_template=Master1
+
+[cluster_worker_nodes]
+worker01.nikita.local
+
+[cluster_worker_nodes:vars]
+host_template=Workers
+
+[cluster:children]
+cluster_master_nodes
+cluster_worker_nodes
+
+[db_server]
+master01.nikita.local
+
+[deployment:children]
+cluster
+db_server
+
+[deployment:vars]
+# Ansible will defer to the running SSH Agent for relevant keys
+# Set the following to hardcode the SSH private key for the instances
+# ansible_ssh_private_key_file=~/.ssh/mykey.pem  
+ansible_user=vagrant
+\end{verbatim}
+\centering
+\caption{Exemple de fichier \texttt{inventory.ini}.}
+\label{fig:example-ansible-inventory}
+\end{figure}
+
+\section{Ambari}
+
+\begin{figure}[H]
+\includegraphics[scale=0.2]{assets/img/logo-ambari.png}
+\centering
+\caption{Logo de \gls{ambari}.}
+\label{fig:logo-ambari}
+\end{figure}
+
+Le projet Apache \gls{ambari} vise à simplifier la gestion d'\gls{hadoop} en développant un logiciel pour le provisionnement, la gestion et la surveillance de clusters Apache \gls{hadoop}. Ambari fournit une interface web de gestion intuitive et facile à utiliser, soutenue par ses API RESTful. \gls{ambari} permet aux administrateurs système de provisionner un cluster \gls{hadoop} grâce à un assistant qui guide l'utilisateur étape par étape pour l'installation des services sur tous les hôtes. De plus, le logiciel fournit une gestion centrale pour le démarrage, l'arrêt et la reconfiguration des services sur l'ensemble du cluster. Enfin, \gls{ambari} fournit un tableau de bord pour surveiller la santé et l'état du cluster.
+
+\section{Hadoop}
+
+\begin{figure}[H]
 \includegraphics[scale=0.2]{assets/img/logo-hadoop.png}
 \centering
 \caption{Logo de \gls{hadoop}.}
@@ -538,15 +602,6 @@ Apache \gls{hadoop} est un logiciel open-source pour le stockage et le traitemen
 
 \subsection{Stack Hadoop}
 
-Le stack technologique Hadoop est constituée des éléments suivants :
-
-\begin{description}
-  \item[HDFS] Le Hadoop Distributed File System est le système de fichiers personnalisé conçu pour l'écosystème \gls{hadoop}, qui prend en charge les blocs de grande taille et coordonne le stockage entre plusieurs nœuds de données.
-  \item[MapReduce] Paradigme de programmation permettant une extensibilité massive sur des centaines ou des milliers de serveurs dans un cluster \gls{hadoop}.
-  \item[Pig] Langage de scripting qui permet aux utilisateurs d'\gls{hadoop} de se concentrer davantage sur l'analyse de grands ensembles de données et de passer moins de temps à écrire des programmes de mappage et de réduction.
-  \item[Hive] Hive permet aux développeurs SQL d'écrire des instructions en Hive Query Language (HQL) qui sont similaires aux instructions SQL standard.\\
-\end{description}
-
 \gls{hadoop} et ses différents composants s'assemblent pour garantir un modèle de stockage et de gestion des Big Data tolérant aux pannes, durable et hautement efficace. Un cluster Big Data peut être décomposé en plusieurs noeuds :
 
 \begin{description}
@@ -560,29 +615,196 @@ Associés à ces différents types de noeuds, il existe des gestionnaires
   \item[Resource Manager] Il s'agit d'un démon yarn qui gère l'allocation des ressources aux différents jobs et qui comprend un planificateur qui s'occupe de la programmation des jobs.
 \end{description}
 
-\chapter*{Bilan et perspectives}
+\chapter{Déploiement d’un cluster Hadoop}
+
+Cette section décrit la méthodologie permettant l'installation et la configuration de l'écosystème Hadoop dans un cluster multinode. J'ai mis en place une architecture composée de deux nœuds, un master et un worker. Pour ce projet, j'ai utilisé Ambari 2.7.3 et HDP-3.1.4. Les fichiers sources sont disponibles sur le cloud d'Adaltas à l'adresse suivante : \href{https://repos.adaltas.cloud/}{https://repos.adaltas.cloud/}.
+
+\section{Déploiement de l'architecture}
+
+Ce projet a été lancé avec un cluster multinode. Pour cela, il est nécessaire de déployer deux machines virtuelles \gls{centos} 7 et de les configurer de telle sorte à ce qu'elles puissent accueillir les différents services du cluster. Le déploiement de ces vms est effectué en quelques commandes grâce à \gls{vagrant}. Le \texttt{Vagrantfile} utilisé est décrit dans la figure \ref{fig:example-vagrantfile}. Le cluster est constitué des noeuds \texttt{master01} et \texttt{worker01} dont les caractéristiques sont décrites respectivement dans les figures \ref{tab:caractéristiques-cluster-master01} et \ref{tab:caractéristiques-cluster-worker01}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Intitulé}} & \multicolumn{1}{c|}{\textbf{Valeur}}         \\ \hline
+FQDN                                      & master01.nikita.local                      \\ \hline
+Adresse IP                                & 10.10.10.11                                \\ \hline
+Mémoire                                   & 8192 MB                                    \\ \hline
+\end{tabular}
+\caption{Caractéristiques du noeud \texttt{master01}.}
+\label{tab:caractéristiques-cluster-master01}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Intitulé}} & \multicolumn{1}{c|}{\textbf{Valeur}}         \\ \hline
+FQDN                                      & worker01.nikita.local                      \\ \hline
+Adresse IP                                & 10.10.10.16                                \\ \hline
+Mémoire                                   & 2048 MB                                    \\ \hline
+\end{tabular}
+\caption{Caractéristiques du noeud \texttt{worker01}.}
+\label{tab:caractéristiques-cluster-worker01}
+\end{table}
+
+Une fois ces machines définies dans le \texttt{Vagrantfile}, il suffit de taper la commande suivante pour démarrer les noeuds :
+
+\begin{verbatim}
+$ vagrant up
+\end{verbatim}
+
+Nous avons maintenant un cluster avec deux machines virtuelles \gls{centos} 7 vierges qui seront utilisées pour installer les différents services \gls{hadoop}.
+
+\section{Installation manuelle}
+
+\subsection{Prérequis}
+
+Avant de pouvoir installer les composants, il est nécessaire d'effectuerquelques prérequis afin d'assurer le bon fonctionnement du cluster.
+
+\subsubsection{Configuration de SSH sans mot de passe}
+
+Pour qu'\gls{ambari} Server installe automatiquement les Agents \gls{ambari} sur tous les hôtes du cluster, il faut configurer des connexions SSH sans mot de passe entre l'hôte \gls{ambari} Server et tous les autres hôtes du cluster. L'hôte \gls{ambari} Server utilise l'authentification par clé publique SSH pour accéder à distance et installer l'agent \gls{ambari}. Autrement, il est possible d'installer manuellement un Agent \gls{ambari} sur chaque hôte du cluster. Dans ce cas, il n'est pas nécessaire de générer et de distribuer des clés SSH. La première méthode est recommandée car elle permet de définir les connexions entre les noeuds avant la mise en place d'\gls{ambari}.
+
+\subsubsection{Création des comptes utilisateurs de service}
+
+Chaque service nécessite un compte utilisateur de service. L'assistant d'installation d'\gls{ambari} crée de nouveaux comptes d'utilisateur et utilise ces derniers lors de la configuration des services \gls{hadoop}. La création de comptes d'utilisateur de service s'applique aux comptes d'utilisateur de service sur le système d'exploitation local et aux comptes LDAP/AD. Par exemple, pour le service Hive, il faut créer un compte utilisateur \texttt{hive} sur tous les noeuds du cluster. Cette opération permet aux services Hive Metastore, HiveServer2 de fonctionner.
+
+\subsubsection{Configuration du DNS}
+
+Tous les hôtes du cluster doivent être configurés convenablement au niveau de la résolution DNS direct et inverse. Pour cela, il suffit de modifier le fichier \texttt{/etc/hosts} sur chaque hôte afin d'y ajouter l'adresse IP et le nom de domaine complet (FQDN) de chaque machine. \gls{hadoop} s'appuie fortement sur le DNS et effectue de nombreuses résolutions DNS en fonctionnement normal. Dans notre exemple, chaque VM contient les entrées suivantes dans le fichier \texttt{/etc/hosts} :
+
+\begin{verbatim}
+127.0.0.1   localhost
+::1         localhost
+10.10.10.11 master01.nikita.local
+10.10.10.16 worker01.nikita.local
+\end{verbatim}
+
+\subsubsection{Configuration des connecteurs de base de données}
+
+Les services tels que Druid, Hive, Ranger et Oozie nécessitent une base de données opérationnelle. Pour qu'\gls{ambari} puisse se connecter à une base de données, il faut télécharger les pilotes de base de données et les connecteurs nécessaires avant d'installer le composant. Il est possible d'utiliser les bases de données MySQL, Oracle, PostgreSQL ou Amazon RDS. Dans notre cas, nous utilisons MySQL que nous installons sur un noeud qui sera utilisé comme serveur BDD.
+
+\subsection{Installation depuis un dossier dans le cloud}
+
+Les fichiers sources permettant l'installation de \gls{hdp} et d'\gls{ambari} sont hébergés sur un dossier dans le cloud d'Adaltas accessible à l'adresse suivante : \href{https://repos.adaltas.cloud/}{https://repos.adaltas.cloud/}. Cela permet de bénéficier d'une plus grande gouvernance et de meilleures performances d'installation. Ensuite, il suffit de modifier le fichier \texttt{ambari.repo} et de remplacer l'URL de base \gls{ambari} \texttt{baseurl} obtenue lors de la configuration.
+
+A présent, il s'agit de télécharger \gls{ambari} Server sur le noeud principal, c'est-à-dire \texttt{master01}. Avant de démarrer le serveur Ambari, il faut le configurer. L'installation configure la connexion à la base de données, installe le JDK et permet de personnaliser le compte utilisateur sous lequel le démon Ambari Server s'exécutera. La commande \texttt{ambari-server setup} gère le processus d'installation.
+
+\subsection{Configuration et déploiement d'un cluster}
+
+Pour installer, configurer et déployer un cluster \gls{hdp}, il faut encore effectuer plusieurs opérations sur l'invité de commande du noeud principal ainsi que sur l'interface web d'\gls{ambari}.
+
+\subsubsection{Démarrage du serveur Ambari}
+
+Exécuter la commande suivante sur l'hôte du serveur \gls{ambari} :
+
+\begin{verbatim}
+ambari-server start
+\end{verbatim}
+
+\subsubsection{Connexion à l'interface Ambari}
+
+Pour se connecter à Ambari Web, il suffit d'ouvrir le navigateur web à l'adresse \texttt{\href{http://master01.nikita.local/8080}{http://master01.nikita.local/8080}} et de se connecter au serveur en utilisant le nom d'utilisateur/mot de passe par défaut : admin/admin. Pour un nouveau cluster, l'assistant d'installation de cluster affiche une page de bienvenue comme le montre la figure \ref{fig:wizard-ambari}.
+
+\begin{figure}[h]
+\includegraphics[scale=0.6]{assets/img/ambari-wizard.png}
+\centering
+\caption{Ecran de bienvenue de l'assistant d'installation \gls{ambari}.}
+\label{fig:wizard-ambari}
+\end{figure}
+
+A présent, il s'agit de lancer l'assistant d'installation de cluster d'\gls{ambari} durant lequel il faudra effectuer les étapes suivantes :
+
+\begin{enumerate}
+\item Attribuer un nom au cluster
+\item Sélectionner la version de \gls{hdp}
+\item Fournir le FQDN de chacun des noeuds
+\item Confirmer qu'\gls{ambari} a localisé tous les hôtes pour s'assurer qu'ils ont les les paquets et les processus requis
+\item Sélectionner les services souhaités au sein du cluster
+\item Assigner les noeuds "master"
+\item Assigner les noeuds "esclaves"
+\item Configurer les services
+\item Confirmer la configuration
+\end{enumerate}
+
+Fort de toutes les étapes que nous venons d'effectuer, nous avons déployé un cluster \gls{hdp} localement. Cela étant, cette méthodologie n'est pas viable si l'on venait à déployer une centaine de clusters sur plusieurs infrastructures indépendantes. Ainsi, il nous faut trouver une solution qui permettrait d'automatiser toutes les étapes redondantes telles que l'installation de la base de données ou encore la configuration du DNS.
+
+\section{Automatisation de l'installation et du déploiement}
+
+La méthode d'installation décrite dans la section précédente n'est pas viable car elle est chronophage et répétitive. Afin de valoriser le temps passé à mettre en place le cluster, il s'agira d'automatiser l'installation et le déploiement du cluster.
+
+\subsection{Automatisation avec Ansible}
+
+\gls{ansible} permet la configuration, le déploiement, le provisionnement, et l'orchestration de clusters multi-nœuds. Pour cela, il existe un concept nommé \textbf{playbook}. Les playbooks enregistrent et exécutent les fonctions de configuration, de déploiement et d'orchestration d'Ansible. Ils peuvent décrire une configuration à appliquer pour les systèmes, ou un ensemble d'étapes d'un processus informatique général. Les playbooks sont conçus pour être lisibles par l'homme et sont développés dans un langage texte de base. Pour l'automatisation du déploiement, j'ai créé un playbook Ansible, inspiré de celui mis à disposition par Hortonworks\footnote{\href{https://github.com/hortonworks/ansible-hortonworks}{https://github.com/hortonworks/ansible-hortonworks}}, capable de construire un cluster \gls{hdp} en utilisant Ambari Blueprints. Les Blueprints d'Ambari sont une définition déclarative d'un cluster. Avec un Blueprint, il est possible de définir le Stack Hadoop, la disposition des composants et les configurations pour matérialiser une instance de cluster Hadoop (via une \gls{api}) sans avoir à utiliser l'assistant d'installation de cluster Ambari. Ainsi, le playbook se charge des étapes suivantes :
+
+\begin{enumerate}
+\item Préparation des noeuds (prérequis)
+\item Installation d'\gls{ambari}
+\item Configuration d'\gls{ambari}
+\item Déploiement du Blueprint
+\item Post-installation (tests fonctionnels)
+\end{enumerate}
+
+Avec cette méthodologie, nous arrivons au même résultat qu'avec l'installation manuelle. Il est possible de modifier quelques fichiers de configuration et ainsi de déployer n'importe quel cluster sur n'importe quelle infrastructure.
+
+\section{Services Hadoop}
+
+Dans cette section, nous décrivons les services Hadoop installés sur le cluster, indépendamment de la méthodologie utilisée.
+
+\subsection{HDFS}
+
+Hadoop Distributed File System (HDFS) est un système de fichiers distribués. HDFS est hautement tolérant aux pannes. Il fournit un accès haut débit aux données et convient à des applications qui ont de grands ensembles de données. HDFS assouplit quelques exigences POSIX pour permettre un accès en continu aux données du système de fichiers.
+
+\subsection{YARN}
+
+YARN est un système d'exploitation distribué à grande échelle pour les applications big data. Cette technologie est conçue pour la gestion de clusters. YARN est capable de découpler les capacités de gestion et d'ordonnancement des ressources de MapReduce du composant de traitement des données.
+
+\subsection{HBase}
+
+HBase est un système de gestion de base de données non relationnelle, open-source, distribuée, versionnée, qui fonctionne au-dessus du système de fichiers distribués Hadoop (HDFS). HBase offre un moyen tolérant aux pannes de stocker des ensembles de données, ce qui est courant dans de nombreux cas d'utilisation du Big Data. Il est bien adapté au traitement des données en temps réel ou à l'accès aléatoire en lecture/écriture à de grands volumes de données.
+
+\subsection{Hive}
+
+Hive est utilisé comme substitut de SQL pour le système de fichiers Hadoop, ce qui permet aux utilisateurs connaissant SQL d'interroger facilement des données à partir de ce système au lieu de devoir apprendre Map-Reduce. Le logiciel facilite la lecture, l'écriture et la gestion de grands ensembles de données au sein d'un stockage distribué.
+
+\subsection{Spark}
+
+Apache Spark est un moteur d'analyse unifié pour le traitement des données à grande échelle. Il fournit des API de haut niveau en Java, Scala, Python et R, ainsi qu'un moteur optimisé qui prend en charge les graphes d'exécution généraux. Il prend également en charge un riche ensemble d'outils de plus haut niveau, notamment Spark SQL pour le traitement des données SQL et structurées, MLlib pour l'apprentissage automatique, GraphX pour le traitement des graphes et Structured Streaming pour le calcul incrémental et le traitement en continu.
+
+\subsection{Oozie}
+
+Apache Oozie est un logiciel utilisé pour planifier les travaux Apache Hadoop. Oozie combine plusieurs travaux de manière séquentielle en une seule unité logique de travail. Il est intégré au Stack Hadoop, avec YARN comme centre architectural, et prend en charge les travaux Hadoop pour Apache MapReduce, Apache Pig, Apache Hive et Apache Sqoop. Oozie peut également planifier des tâches spécifiques à un système, comme des programmes Java ou des scripts shell.
+
+\subsection{Ranger}
+
+Apache Ranger est un logiciel permettant de mettre en place la sécurité d'un cluster Hadoop. Il fournit une plateforme centralisée pour définir, administrer et gérer les politiques de sécurité de manière cohérente à travers les services Hadoop.
+
+\chapter*{Conclusion et perspectives}
 \addcontentsline{toc}{chapter}{Bilan et perspectives}
 
 Fort des éléments énoncés précédemment, ce stage technique effectué au sein de l’entreprise Adaltas constitue une expérience des plus enrichissantes étant donné la complexité technique des missions auxquelles j'ai pu prétendre participer. Outre l’aventure humaine enrichissante que j’eus la chance et le privilège de vivre, ce stage m’apprit le sens de la rigueur, du professionnalisme, ainsi que l’importance du temps et de son agencement. Grâce à cette expérience, j’ai acquis des nouvelles compétences qui me seront utiles pour mes futurs projets. De plus, les différentes missions effectuées m’ont permis d’accroître ma volonté de savoir et de connaissance, notamment dans le domaine du Big Data.\\
 
-La réalisation des travaux décrits dans ce rapport m'a permis d'acquérir de nouvelles compétences en matière de développement et maintenance de code. En effet, le code tel qu'il existait précédemment était fonctionnel. Néanmoins, Adaltas a pris la décision de \textit{refactor} le code. Au cours de la vie d'un logiciel, des fonctionnalités sont ajoutées et des bugs sont corrigés. Ces modifications successives, n'améliorant pas en général la lisibilité du logiciel, ne facilitent pas, de ce fait, sa maintenance ultérieure. Le code source d'un programme a tout intérêt à rester, malgré ses modifications, le plus clair possible.\\
+La réalisation des travaux décrits dans ce rapport m'a permis d'acquérir de nouvelles compétences en matière de développement, de gestion et de déploiement d'un cluster Big Data. J'ai appris à construire des systèmes faciles à utiliser, automatisés, sécurisés et fiables.\\
 
 En terme de compétences techniques nouvellement acquises, nous pouvons énoncer :
 
 \begin{itemize}
-\item [--] maîtrise du langage de programmation \gls{coffeescript} et son environnement de développement;
-\item [--] utilisation de l'outil de versioning \gls{git};
-\item [--] workflow développement logiciel;
-\item [--] technologie \gls{nodejs}.\\
+\item [--] Configuration et utilisation de systèmes et outils d'infrastructure
+\item [--] Déploiement de systèmes évolutifs avec une infrastructure de production
+\item [--] Automatisation du déploiement et provisionnement de clusters Big Data
 \end{itemize}
-
-Ma contribution à ce projet à été chaleureusement accueillie par Adaltas. En effet, étant donné que Nikita est un logiciel Open Source, il génère peu voire pas de revenus. Mettre un consultant sur une telle mission n'est donc pas rentable pour l'entreprise. C'est pourquoi mon intervention a été la bienvenue.
 
 \clearpage
 
 \printglossaries
 
+\includepdf[pages=-]{assets/pdf/resume-old.pdf}
+\includepdf[pages=-]{assets/pdf/resume-new.pdf}
 \includegraphics[scale=0.25]{assets/img/evaluation.png}
+\includepdf[pages=-]{assets/pdf/eval-rds.pdf}
+\includepdf[pages=-]{assets/pdf/eval-soutenance.pdf}
 
 \end{document}
 
