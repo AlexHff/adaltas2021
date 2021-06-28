@@ -322,8 +322,7 @@ Ce rapport décrit les travaux effectués lors de mon stage de 6 mois chez Adalt
 \newpage
 \endgroup
 
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter{Introduction}
 
 Mon intérêt pour la data science et plus généralement pour l’informatique et les nouvelles technologies m’a amené à chercher un stage dans une société qui en a fait son cœur de métier. Au sein de l'équipe InfraOps d'Adaltas, j'ai trouvé une opportunité unique pour mettre à profit mes compétences en matière de développement et de conception. J'ai eu la chance de participer à la création de systèmes et d'outils d'infrastructure permettant la mise en production de nouveaux produits qui s'étendent sur des millions d'utilisateurs. Pour assurer l’exploitation de la plateforme, j'ai mis en place des chaînes de traitement en streaming pour collecter, traiter, afficher et alerter à partir des évènements émis par le système.\\
 
@@ -781,10 +780,21 @@ Apache Oozie est un logiciel utilisé pour planifier les travaux Apache Hadoop. 
 
 Apache Ranger est un logiciel permettant de mettre en place la sécurité d'un cluster Hadoop. Il fournit une plateforme centralisée pour définir, administrer et gérer les politiques de sécurité de manière cohérente à travers les services Hadoop.
 
-\chapter*{Conclusion et perspectives}
-\addcontentsline{toc}{chapter}{Bilan et perspectives}
+\chapter{Conclusion et perspectives}
 
-Fort des éléments énoncés précédemment, ce stage technique effectué au sein de l’entreprise Adaltas constitue une expérience des plus enrichissantes étant donné la complexité technique des missions auxquelles j'ai pu prétendre participer. Outre l’aventure humaine enrichissante que j’eus la chance et le privilège de vivre, ce stage m’apprit le sens de la rigueur, du professionnalisme, ainsi que l’importance du temps et de son agencement. Grâce à cette expérience, j’ai acquis des nouvelles compétences qui me seront utiles pour mes futurs projets. De plus, les différentes missions effectuées m’ont permis d’accroître ma volonté de savoir et de connaissance, notamment dans le domaine du Big Data.\\
+Ce chapitre clôture ce rapport de stage qui traite de l'automatisation de l'installation, de la configuration et du déploiement d'un cluster HDP. Au fil de ce rapport, nous avons présenté une méthode manuelle de déploiement de cluster, c'est-à-dire en accédant aux différents noeuds du cluster pour installer les prérequis puis en suivante les étapes de configuration grâce à l'assistant de configuration Ambari. Puis nous avons amélioré ce déploiement en l'automatisant grâce à Ansible. Enfin, l’ensemble des publications réalisées à partir des travaux décrits dans ce rapport sont disponibles sur le site d'Adaltas.
+
+\section{Résultats obtenus}
+
+Lors de l'installation, la configuration et le déploiement manuel du cluster, une étude de la durée et de l’extensibilité a été effectuée. Cette méthodologie n'a pas la capacité de s'adapter à un changement d'ordre de grandeur de la demande. En d'autres termes, il semble chronophage et redondant d'appliquer cette méthode d'installation sur un grand nombre de clusters avec des configurations différentes et des environnements de déploiement variables. Ainsi, l'automatisation du processus présente des avantages majeurs, notamment d'un point de vue temporel. 
+
+\section{Perspectives}
+
+Le projet visant à développer une plateforme ou un logiciel permettant le déploiement facile et rapide d'un cluster Hadoop est loin d'être abouti. La solution proposée par Cloudera constitue une fondation solide mais ne présente pas les avantages d'un logiciel open-source. L'objectif, à long terme, consiste en le développement d'un logiciel open-source permettant l’analyse de données grâce à des outils analytiques en libre-service au sein d’environnements hybrides et multicloud tout en proposant une expérience des données partagée qui garantit sécurité, gouvernance et métadonnées.
+
+\section{Mot de la fin}
+
+Ce stage technique effectué au sein de l’entreprise Adaltas constitue une expérience des plus enrichissantes étant donné la complexité technique des missions auxquelles j'ai pu prétendre participer. Outre l’aventure humaine enrichissante que j’eus la chance et le privilège de vivre, ce stage m’apprit le sens de la rigueur, du professionnalisme, ainsi que l’importance du temps et de son agencement. Grâce à cette expérience, j’ai acquis des nouvelles compétences qui me seront utiles pour mes futurs projets. De plus, les différentes missions effectuées m’ont permis d’accroître ma volonté de savoir et de connaissance, notamment dans le domaine du Big Data.\\
 
 La réalisation des travaux décrits dans ce rapport m'a permis d'acquérir de nouvelles compétences en matière de développement, de gestion et de déploiement d'un cluster Big Data. J'ai appris à construire des systèmes faciles à utiliser, automatisés, sécurisés et fiables.\\
 
